@@ -7,3 +7,8 @@
 .App {
   font-family: Overlock, Nunito, serif;
 }
+
+img {
+  width: 100%;
+  object-fit: contain;
+}

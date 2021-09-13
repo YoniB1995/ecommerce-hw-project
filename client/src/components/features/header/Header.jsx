@@ -1,40 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-
+import SideDrawer from "../navbar/SideDrawer";
+import Backdrop from "../navbar/Backdrop";
+import Navbar from "../navbar/Navbar";
 const Header = () => {
-  const style = { textDecoration: "none" };
+  const [sideToggle, setSideToggle] = useState(false);
   return (
     <HeaderBody>
-      <HeaderList>
-        <img
-          src="images/header_milk_Honey.jpg"
-          alt="milk_honey_banner"
-          height="100px"
-          width="100px"
-        />
-        <Link to="/" style={style}>
-          <li>Home</li>
-        </Link>
-        <Link style={style}>
-          <li>Mens</li>
-        </Link>
-        <Link style={style}>
-          <li>Womens</li>
-        </Link>
-        <Link style={style}>
-          <li>Jewelery</li>
-        </Link>
-        <Link style={style}>
-          <li>Electronics</li>
-        </Link>
-        <Link style={style}>
-          <li>Contact Us</li>
-        </Link>
-        <Link style={style}>
-          <li>Cart</li>
-        </Link>
-      </HeaderList>
+      <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
+      <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
+      <Navbar click={() => setSideToggle(true)} />
     </HeaderBody>
   );
 };
@@ -48,23 +23,4 @@ const HeaderBody = styled.div`
   flex-direction: row;
   font-size: 30px;
   height: 20vh;
-`;
-
-const HeaderList = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: stretch;
-  list-style-type: none;
-  li {
-    margin: 30px;
-  }
-
-  li:hover {
-    opacity: 0.5;
-    transition: 0.5s ease-in-out;
-    border-radius: 10px;
-    cursor: pointer;
-  }
 `;

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import ProductsCard from "../features/card/ProductsCard";
-import { API } from "../../service/product-service";
-import "./HomepageTest.css";
-const Homepage = () => {
-  const [products, setProducts] = useState([]);
+import ProductsCard from "../../features/card/ProductsCard";
+
+const Mens = () => {
+  const [mens, setMens] = useState([]);
 
   useEffect(() => {
-    fetch(`${API}/products`)
+    fetch(`https://fakestoreapi.com/products/category/men's%20clothing`)
       .then((response) => response.json())
-      .then((result) => setProducts(result));
+      .then((result) => setMens(result));
   }, []);
 
   return (
-    <HomepageBody>
+    <div>
+      <img src="images/men_clothing_logo.jpg" alt="men logo" />
+
       <ProductsList>
-        {products.map((product, i) => (
+        {mens.map((product, i) => (
           <ProductsCard
             key={i}
             title={product.title}
@@ -23,22 +24,17 @@ const Homepage = () => {
             description={product.description}
             category={product.category}
             image={product.image}
-            productID={product.productID}
+            productID={product.id}
           />
         ))}
       </ProductsList>
-    </HomepageBody>
+    </div>
   );
 };
 
-export default Homepage;
+export default Mens;
 
-const HomepageBody = styled.div`
-  height: 100%;
-  background: #ffffff;
-`;
-
-const ProductsList = styled.div`
+export const ProductsList = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

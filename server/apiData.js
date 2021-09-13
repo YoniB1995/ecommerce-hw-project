@@ -1,24 +1,21 @@
 require('dotenv').config();
-// const connectDB= require('./db');
+const connectDB= require('./db');
 
+const storeData = require('./data/store')
+const storeModel = require('./models/productModel')
 
 
 const importData = async () => {
     try{
     
-    // await watch.deleteMany({});
-    // await watch.insertMany(watchesData);
+    await storeModel.deleteMany({});
+    await storeModel.insertMany(storeData);
 
-    // await blazer.deleteMany({});
-    // await blazer.insertMany(blazersData);
+  
 
-    // await bag.deleteMany({});
-    // await bag.insertMany(bagsData);
+    console.log("data import success")
 
-
-    // console.log("data import success")
-
-    // process.exit();
+    process.exit();
     }
     catch(error){
         console.error("Error with data import")
@@ -26,4 +23,4 @@ const importData = async () => {
     }
 }
 
-// module.exports = importData();
+module.exports = importData();
