@@ -16,24 +16,6 @@ const ProductsCard = ({
 
   return (
     <ProductCard>
-      {/* <div class="hero-container">
-        <div class="main-container">
-          <div class="poster-container">
-            <a href="#">
-              <img src={image} class="poster" />
-            </a>
-          </div>
-          <div class="ticket-container">
-            <div class="ticket__content">
-              <h4 class="ticket__movie-title">{title}</h4>
-              <p class="ticket__movie-slogan">{category}</p>
-              <p class="ticket__current-price">{Math.round(price * 0.8)}$</p>
-              <p class="ticket__old-price">{price}$</p>
-              <button class="ticket__buy-btn">More Details</button>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <h3>{title}</h3>
       <p>{category}</p>
       <p>

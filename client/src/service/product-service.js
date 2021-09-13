@@ -1,6 +1,6 @@
 export const API =
   process.env.NODE_ENV === "production"
-    ? `https://milk-n-honey-store-app.herokuapp.com/`
+    ? `https://milk-n-honey-store-app.herokuapp.com`
     : "http://localhost:5000";
 
     
