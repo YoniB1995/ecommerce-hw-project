@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProductsCard from "../../features/card/ProductsCard";
-
+import { API_STORE_MEN } from "../../../service/api.service";
 const Mens = () => {
-  const [mens, setMens] = useState([]);
+  const [menProducts, setMenProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/category/men's%20clothing`)
+    fetch(API_STORE_MEN)
       .then((response) => response.json())
-      .then((result) => setMens(result));
+      .then((result) => setMenProducts(result));
   }, []);
 
   return (
@@ -16,7 +16,7 @@ const Mens = () => {
       <img src="images/men_clothing_logo.jpg" alt="men logo" />
 
       <ProductsList>
-        {mens.map((product, i) => (
+        {menProducts.map((product, i) => (
           <ProductsCard
             key={i}
             title={product.title}
@@ -24,7 +24,7 @@ const Mens = () => {
             description={product.description}
             category={product.category}
             image={product.image}
-            productID={product.id}
+            productID={product._id}
           />
         ))}
       </ProductsList>

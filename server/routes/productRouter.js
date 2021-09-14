@@ -1,10 +1,14 @@
 const express= require('express');
 const router = express.Router();
-const {getAllProducts, getProductByID } = require('../controllers/productController')
+const getFunction = require('../controllers/productController')
 
 
-router.get('/',getAllProducts)
-router.get('/:id',getProductByID)
+router.get('/',getFunction.getAllProducts)
+router.get('/:id',getFunction.getProductByID)
+router.get('/category/men',getFunction.getMenProducts)
+router.get('/category/women',getFunction.getWomenProducts)
+router.get('/category/electronics',getFunction.getElectronicsProducts)
+router.get('/category/jewelry',getFunction.getJewelryProducts)
 
 
 

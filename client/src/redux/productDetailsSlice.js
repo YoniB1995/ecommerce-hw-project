@@ -2,7 +2,7 @@ import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 
 
 export const getProductDetails =  createAsyncThunk('product/getProductDetails', async (id) => {
-    return await fetch(`https://milk-n-honey-store-app.herokuapp.com/products/${id}`).then((res)=> res.json())
+    return await fetch(`http://localhost:5000/products/${id}`).then((res)=> res.json())
 });
 
 const initialState = {

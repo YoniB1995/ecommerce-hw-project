@@ -1,7 +1,7 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
-
+import {API} from '../service/api.service'
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
-    return await fetch('https://milk-n-honey-store-app.herokuapp.com/products').then((res)=> res.json())
+    return await fetch(API).then((res)=> res.json())
 });
 
 const initialState = {

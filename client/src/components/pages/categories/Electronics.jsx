@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import ProductsCard from "../../features/card/ProductsCard";
 import { ProductsList } from "./Mens";
+import { API_STORE_ELECTRONICS } from "../../../service/api.service";
 
 const Electronics = () => {
-  const [electronices, setElectronices] = useState([]);
+  const [electronics, setElectronics] = useState([]);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/category/electronics`)
+    fetch(API_STORE_ELECTRONICS)
       .then((response) => response.json())
-      .then((result) => setElectronices(result));
+      .then((result) => setElectronics(result));
   }, []);
   return (
     <div>
       {" "}
       <img src="images/electronices_logo.png" alt="Electronics" />
       <ProductsList>
-        {electronices.map((product, i) => (
+        {electronics.map((product, i) => (
           <ProductsCard
             key={i}
             title={product.title}
