@@ -22,7 +22,7 @@ const AppRouter = () => {
           <Route exact path="/women" component={Category.Women} />
           <Route exact path="/jewelry" component={Category.Jewelry} />
           <Route exact path="/electronics" component={Category.Electronics} />
-          <Route exact path="*" component={Page.NotFoundPage} />
+          {/* <Route exact path="*" component={Page.NotFoundPage} /> */}
         </Switch>{" "}
       </Router>
     </>
