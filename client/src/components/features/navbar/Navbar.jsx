@@ -28,7 +28,7 @@ export default function Navbar({ click }) {
           <Link to="/contactus" style={style}>
             <li>Contact Us</li>
           </Link>
-          <Link style={style}>
+          <Link to="/checkout" style={style}>
             <li>Cart</li>
           </Link>
         </NavBarLinks>

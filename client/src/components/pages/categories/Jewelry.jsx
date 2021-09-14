@@ -24,7 +24,7 @@ const Jewelry = () => {
             description={product.description}
             category={product.category}
             image={product.image}
-            productID={product.id}
+            productID={product._id}
           />
         ))}
       </ProductsList>
