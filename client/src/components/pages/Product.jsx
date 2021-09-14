@@ -2,64 +2,51 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getProductDetails } from "../../redux/productDetailsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/cartSlicer";
 
-const Product = ({ match }) => {
-  const [qty, setQty] = useState(1);
+const Product = ({ match, history }) => {
   const dispatch = useDispatch();
-  const test = dispatch(getProductDetails());
-  console.log(test);
-  const error = false;
-  const loading = false;
-  const product = "";
-  // useEffect(() => {
-  //   dispatch(getProductDetails(match.params.id));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getProductDetails(match.params.id));
+  }, [dispatch]);
 
-  // const productDetails = useSelector((state) => state.getProduct);
-  // const { product, loading, error } = productDetails;
+  const getProduct = useSelector((state) => state.product);
+  const { product, loading, error } = getProduct;
 
-  // const chosenProduct = products.map(
-  //   (product) => product.productID === getProductID.id && product
-  // );
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    history.push("/checkout");
+  };
 
   return (
     <div>
       <ProductScreenBody>
-        {loading ? (
-          <h2>Loading...</h2>
-        ) : error ? (
-          <h2>{error}</h2>
-        ) : (
-          <>
-            <>
-              <ProductScreenLeft>
-                <LeftImage>
-                  <img src={product.image} alt={product.title} />
-                </LeftImage>
-                <LeftInfo>
-                  <LeftName>{product.title}</LeftName>
-                  <p>Price: ${product.price}</p>
-                  <p>Description: ${product.description}</p>
-                </LeftInfo>
-              </ProductScreenLeft>
-              <ProductScreenRight>
-                <RightInfo>
-                  <p>
-                    Price: <span>${product.price}</span>
-                  </p>
-                  <p>
-                    Status: <span>In Stock</span>
-                  </p>
+        <ProductScreenLeft>
+          <LeftImage>
+            <img src={product.image} alt={product.title} />
+          </LeftImage>
+          <LeftInfo>
+            <LeftName>{product.title}</LeftName>
+            <p>Price: ${product.price}</p>
+            <p>Description: ${product.description}</p>
+          </LeftInfo>
+        </ProductScreenLeft>
+        <ProductScreenRight>
+          <RightInfo>
+            <p>
+              Price: <span>${product.price}</span>
+            </p>
+            <p>
+              Status: <span>In Stock</span>
+            </p>
 
-                  <p>
-                    <button type="button">Add To Cart</button>
-                  </p>
-                </RightInfo>
-              </ProductScreenRight>
-            </>
-            )
-          </>
-        )}
+            <p>
+              <button type="button" onClick={() => handleAddToCart(product)}>
+                Add To Cart
+              </button>
+            </p>
+          </RightInfo>
+        </ProductScreenRight>
       </ProductScreenBody>
     </div>
   );
