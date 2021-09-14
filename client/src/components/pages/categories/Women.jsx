@@ -10,7 +10,7 @@ const Women = () => {
   const [womenProducts, setWomenProducts] = useState([]);
 
   useEffect(() => {
-    fetch(API_LOCAL_STORE_WOMEN)
+    fetch(API_STORE_WOMEN)
       .then((response) => response.json())
       .then((result) => setWomenProducts(result));
   }, []);
