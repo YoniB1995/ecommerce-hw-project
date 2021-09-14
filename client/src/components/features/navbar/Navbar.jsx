@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,7 @@ export default function Navbar({ click }) {
     <>
       <HeaderList>
         <img
-          src="images/header_milk_Honey.jpg"
+          src="images/mil_honey_web_logo.jpeg"
           alt="milk_honey_banner"
           class="header-img"
         />
@@ -66,6 +66,7 @@ const HeaderList = styled.div`
   justify-content: space-around;
   align-items: stretch;
   list-style-type: none;
+  font-size: 20px;
   li {
     margin: 30px;
   }

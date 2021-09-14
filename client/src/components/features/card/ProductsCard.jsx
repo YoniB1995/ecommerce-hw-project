@@ -93,5 +93,5 @@ const ProductCard = styled.div`
 const Description = styled.div`
   width: 70%;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 13px;
 `;
