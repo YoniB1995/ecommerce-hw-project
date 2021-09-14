@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/productsSlice";
 import styled from "styled-components";
 import ProductsCard from "../features/card/ProductsCard";
-import { API } from "../../service/product-service";
+import { CircularProgress } from "@material-ui/core";
 import "./HomepageTest.css";
+
 const Homepage = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${API}/products`)
-      .then((response) => response.json())
-      .then((result) => setProducts(result));
-  }, []);
+    dispatch(getProducts());
+  }, [dispatch]);
+  const getAllProducts = useSelector((state) => state.products);
+  const { products, loading, error } = getAllProducts;
 
   return (
     <HomepageBody>
       <ProductsList>
-        {products.map((product, i) => (
-          <ProductsCard
-            key={i}
-            title={product.title}
-            price={product.price}
-            description={product.description}
-            category={product.category}
-            image={product.image}
-            productID={product.productID}
-          />
-        ))}
+        {loading ? (
+          <CircularProgress />
+        ) : error ? (
+          <h2>{error}</h2>
+        ) : (
+          products.map((product, i) => (
+            <ProductsCard
+              key={i}
+              title={product.title}
+              price={product.price}
+              description={product.description}
+              category={product.category}
+              image={product.image}
+              productID={product._id}
+            />
+          ))
+        )}
       </ProductsList>
     </HomepageBody>
   );

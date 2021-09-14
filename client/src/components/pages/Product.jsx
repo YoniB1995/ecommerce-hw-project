@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
-import { API } from "../../service/product-service";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { addToCart, removeFromCart } from "../../redux/cart";
+import { getProductDetails } from "../../redux/productDetailsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const Product = ({ loading, error }) => {
-  let getProductID = useParams();
-  const [products, setProducts] = useState([]);
+const Product = ({ match }) => {
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+  const test = dispatch(getProductDetails());
+  console.log(test);
+  const error = false;
+  const loading = false;
+  const product = "";
+  // useEffect(() => {
+  //   dispatch(getProductDetails(match.params.id));
+  // }, [dispatch]);
 
-  //   const dispatch = useDispatch();
+  // const productDetails = useSelector((state) => state.getProduct);
+  // const { product, loading, error } = productDetails;
 
-  //   const cart = useSelector((state) => state.cart);
-  //   const { cartItems } = cart;
-  useEffect(() => {
-    fetch(`${API}/products`)
-      .then((response) => response.json())
-      .then((result) => setProducts(result));
-  }, []);
-
-  const chosenProduct = products.map(
-    (product) => product.productID === getProductID.id && product
-  );
+  // const chosenProduct = products.map(
+  //   (product) => product.productID === getProductID.id && product
+  // );
 
   return (
     <div>
@@ -33,37 +31,33 @@ const Product = ({ loading, error }) => {
           <h2>{error}</h2>
         ) : (
           <>
-            {chosenProduct.map(
-              (product) =>
-                product && (
-                  <>
-                    <ProductScreenLeft>
-                      <LeftImage>
-                        <img src={product.image} alt={product.title} />
-                      </LeftImage>
-                      <LeftInfo>
-                        <LeftName>{product.title}</LeftName>
-                        <p>Price: ${product.price}</p>
-                        <p>Description: ${product.description}</p>
-                      </LeftInfo>
-                    </ProductScreenLeft>
-                    <ProductScreenRight>
-                      <RightInfo>
-                        <p>
-                          Price: <span>${product.price}</span>
-                        </p>
-                        <p>
-                          Status: <span>In Stock</span>
-                        </p>
+            <>
+              <ProductScreenLeft>
+                <LeftImage>
+                  <img src={product.image} alt={product.title} />
+                </LeftImage>
+                <LeftInfo>
+                  <LeftName>{product.title}</LeftName>
+                  <p>Price: ${product.price}</p>
+                  <p>Description: ${product.description}</p>
+                </LeftInfo>
+              </ProductScreenLeft>
+              <ProductScreenRight>
+                <RightInfo>
+                  <p>
+                    Price: <span>${product.price}</span>
+                  </p>
+                  <p>
+                    Status: <span>In Stock</span>
+                  </p>
 
-                        <p>
-                          <button type="button">Add To Cart</button>
-                        </p>
-                      </RightInfo>
-                    </ProductScreenRight>
-                  </>
-                )
-            )}
+                  <p>
+                    <button type="button">Add To Cart</button>
+                  </p>
+                </RightInfo>
+              </ProductScreenRight>
+            </>
+            )
           </>
         )}
       </ProductScreenBody>

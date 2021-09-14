@@ -4,7 +4,7 @@ const {getAllProducts, getProductByID } = require('../controllers/productControl
 
 
 router.get('/',getAllProducts)
-router.get('/product',getProductByID)
+router.get('/:id',getProductByID)
 
 
 
