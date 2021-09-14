@@ -53,13 +53,18 @@ const ProductsCard = ({
 export default ProductsCard;
 
 const ProductCard = styled.div`
-  background: white;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.008841036414565795) 0%,
+    rgba(6, 0, 6, 1) 97%
+  );
   border: 1px solid black;
   border-radius: 15px;
   box-shadow: 2px 2px 2px black;
-  width: 30%;
+  width: 20%;
+  padding: 5px;
   height: 70vh;
-  margin: 5px;
+  margin: 17px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -68,6 +73,12 @@ const ProductCard = styled.div`
 
   img {
     height: 150px;
+  }
+
+  :hover {
+    opacity: 0.8;
+    transition: 0.3s ease-in-out;
+    background: white;
   }
 
   @media screen and (max-width: 840px) {

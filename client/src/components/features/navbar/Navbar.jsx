@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotals } from "../../../redux/cartSlicer";
+import { shopCartIcon, contactUsIcon } from "../icons/Icons";
 
 export default function Navbar({ click }) {
   const style = { textDecoration: "none", color: "black" };
 
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
   return (
     <>
       <HeaderList>
-        <img src="images/header_milk_Honey.jpg" alt="milk_honey_banner" />
+        <img
+          src="images/header_milk_Honey.jpg"
+          alt="milk_honey_banner"
+          class="header-img"
+        />
         <NavBarLinks>
           <Link to="/" style={style}>
             <li>Home</li>
@@ -26,18 +40,21 @@ export default function Navbar({ click }) {
             <li>Electronics</li>
           </Link>
           <Link to="/contactus" style={style}>
-            <li>Contact Us</li>
+            <li>{contactUsIcon}Contact Us</li>
           </Link>
           <Link to="/checkout" style={style}>
-            <li>Cart</li>
+            <li>
+              {shopCartIcon} Cart <b>({cart.cartTotalQuantity}) </b>
+            </li>
           </Link>
         </NavBarLinks>
+        <HamburgerHeader>Menu</HamburgerHeader>
+        <HamburgerMenu onClick={click}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </HamburgerMenu>
       </HeaderList>
-      <HamburgerMenu onClick={click}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </HamburgerMenu>
     </>
   );
 }
@@ -66,8 +83,14 @@ const HeaderList = styled.div`
   }
 
   @media (max-width: 960px) {
+    display: flex;
+    justify-content: space-around;
     img {
       width: 20%;
+    }
+
+    .header-img {
+      display: none;
     }
   }
 `;
@@ -101,6 +124,15 @@ const NavBarLinks = styled.ul`
   }
 `;
 
+const HamburgerHeader = styled.h4`
+  display: none;
+
+  @media (max-width: 960px) {
+    display: flex;
+    margin-top: 30px;
+  }
+`;
+
 const HamburgerMenu = styled.div`
   width: 30px;
   height: 30px;
@@ -117,5 +149,6 @@ const HamburgerMenu = styled.div`
 
   @media (max-width: 960px) {
     display: flex;
+    margin-top: 30px;
   }
 `;

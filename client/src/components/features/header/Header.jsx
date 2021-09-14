@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SideDrawer from "../navbar/SideDrawer";
 import Backdrop from "../navbar/Backdrop";
 import Navbar from "../navbar/Navbar";
+
 const Header = () => {
   const [sideToggle, setSideToggle] = useState(false);
   return (
@@ -23,4 +24,9 @@ const HeaderBody = styled.div`
   flex-direction: row;
   font-size: 30px;
   height: 20vh;
+
+  @media (max-width: 960px) {
+    background: #f4f4f4;
+    border-bottom: 1px thin black;
+  }
 `;
