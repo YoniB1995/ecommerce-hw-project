@@ -88,10 +88,18 @@ const ProductCard = styled.div`
   @media screen and (max-width: 500px) {
     width: 90%;
   }
+
+  @media screen and (max-height: 400px) {
+    height: 130vh;
+  }
 `;
 
 const Description = styled.div`
   width: 70%;
   font-weight: 300;
   font-size: 13px;
+
+  @media (max-height: 400px) {
+    font-size: 8px;
+  }
 `;

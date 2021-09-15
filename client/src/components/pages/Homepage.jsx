@@ -17,6 +17,13 @@ const Homepage = () => {
 
   return (
     <HomepageBody>
+      <img
+        src="images/mil_honey_banner.jpg"
+        alt="mlik and honey banner"
+        height="450px"
+        width="450px"
+      />
+      <HeaderHomepage>Latest Products</HeaderHomepage>
       <ProductsList>
         {loading ? (
           <CircularProgress />
@@ -43,8 +50,13 @@ const Homepage = () => {
 export default Homepage;
 
 const HomepageBody = styled.div`
+  text-align: center;
+`;
+const HeaderHomepage = styled.h1`
   height: 100%;
   background: #ffffff;
+  @media screen and (max-height: 400px) {
+  }
 `;
 
 const ProductsList = styled.div`
@@ -61,5 +73,9 @@ const ProductsList = styled.div`
   @media screen and (max-width: 500px) {
     display: flex;
     flex-direction: column;
+  }
+
+  @media screen and (max-height: 400px) {
+    display: flex;
   }
 `;

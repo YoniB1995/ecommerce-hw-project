@@ -1,37 +1,15 @@
-import React, { useRef, useState } from "react";
-import {
-  Card,
-  Button,
-  Form,
-  Alert,
-  Container,
-  FormControl,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Form, Alert, Container } from "react-bootstrap";
 import { userSendMail } from "../icons/Icons";
-import { useHistory, Link } from "react-router-dom";
 
 const ContactForm = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
-    }
 
-    try {
-      setError("");
-      setLoading(true);
-      // await signUp(emailRef.current.value, passwordRef.current.value);
-      // history.push("/");
-    } catch {
-      setError("Failed to create an account");
-    }
-    setLoading(false);
+    alert("build on progress..contact me yonatansamfisher@gmail.com");
   }
   return (
     <>
@@ -47,11 +25,11 @@ const ContactForm = () => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required />
+                  <Form.Control type="email" required />
                 </Form.Group>
                 <Form.Group id="subject">
                   <Form.Label>Subject</Form.Label>
-                  <Form.Control type="subject" ref={emailRef} required />
+                  <Form.Control type="subject" required />
                 </Form.Group>
                 <Form.Group id="description">
                   <Form.Label>Description</Form.Label>
@@ -59,7 +37,6 @@ const ContactForm = () => {
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
                     as="textarea"
-                    ref={passwordRef}
                     required
                   />
                 </Form.Group>
