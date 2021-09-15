@@ -1,2 +1,11 @@
-# gk-group-hw-project
-3 Days Project made for GKI Group Company featuring mini ecommerce project - server and client sides, user authentication with Firebase, and redux toolkit.
+<h1>GKI mini-eCommerce App</h1>
+
+
+- Deployment -Website Display - Heroku - https://milk-n-honey-store-app.herokuapp.com/
+- ✨Styled Components ✨
+- ✨Redux & useContext and useReducer✨
+- ✨User Authentication via Firebase✨
+- ✨Responsivve for Phones & Small Screens and iPads✨
+
+
+
