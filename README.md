@@ -17,7 +17,7 @@
 This library is build with composer. So you can even clone this repisory and install the dependencies via composer or just require this library in the composer.json of your project.
 
 ### Clone
-clone the repitory from GitHub
+clone the repository from GitHub
 
     git clone https://github.com/YoniB1995/gk-group-hw-project.git .
 
