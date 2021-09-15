@@ -1,13 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotals } from "../../../redux/cartSlicer";
-import { shopCartIcon, contactUsIcon } from "../icons/Icons";
+import { useAuth } from "../../context/AuthContext";
+
+import {
+  shopCartIcon,
+  contactUsIcon,
+  userLoginIcon,
+  userRegisterIcon,
+  userLogoutIcon,
+} from "../icons/Icons";
 
 export default function Navbar({ click }) {
   const style = { textDecoration: "none", color: "black" };
+  const history = useHistory();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setUser(localStorage.getItem("useremail").toString());
+    }
+  }, [user]);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -15,14 +31,50 @@ export default function Navbar({ click }) {
     dispatch(getTotals());
   }, [cart, dispatch]);
 
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    setError("");
+    localStorage.removeItem("useremail");
+    localStorage.removeItem("token");
+    history.push("/login");
+    setUser(null);
+    try {
+      await logout();
+    } catch {
+      setError("Failed to log out");
+    }
+  };
+
   return (
     <>
       <HeaderList>
-        <img
-          src="images/mil_honey_web_logo.jpeg"
-          alt="milk_honey_banner"
-          class="header-img"
-        />
+        <HeaderImageRegister>
+          <Link to="/" style={style}>
+            <img
+              src="images/mil_honey_web_logo.jpeg"
+              alt="milk_honey_banner"
+              class="header-img"
+            />
+          </Link>
+          {!user ? (
+            <>
+              <Link to="/signup" style={style}>
+                <li>Register{userRegisterIcon}</li>
+              </Link>{" "}
+              <Link to="/login" style={style}>
+                <li>Login{userLoginIcon}</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <li>Welcome {user}</li>
+              <button onClick={handleLogout}>
+                <li>Logout{userLogoutIcon}</li>
+              </button>
+            </>
+          )}
+        </HeaderImageRegister>
         <NavBarLinks>
           <Link to="/" style={style}>
             <li>Home</li>
@@ -93,6 +145,15 @@ const HeaderList = styled.div`
     .header-img {
       display: none;
     }
+  }
+`;
+
+const HeaderImageRegister = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-weight: 900;
+  @media (max-width: 960px) {
+    display: none;
   }
 `;
 

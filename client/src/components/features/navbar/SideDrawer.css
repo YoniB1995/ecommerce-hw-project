@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .sidedrawer__links > li > a {
@@ -52,25 +52,6 @@
   display: flex;
   align-items: center;
   margin-left: 8px;
-}
-
-.sidedrawer__cartbadge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #171717;
-  color: #f4f4f4;
-  font-size: 1rem;
-  margin-left: 8px;
-}
-
-.sidedrawer__links > li > a:hover .sidedrawer__cartbadge {
-  background-color: #141414;
-  color: #f4f4f4;
 }
 
 @media (min-width: 960px) {
