@@ -14,7 +14,7 @@
 - ✨Responsivve for Phones & Small Screens and iPads✨
 
 # Installation
-This library is build with composer. So you can even clone this repisory and install the dependencies via composer or just require this library in the composer.json of your project.
+Clone / Fork the repository
 
 ### Clone
 clone the repository from GitHub
