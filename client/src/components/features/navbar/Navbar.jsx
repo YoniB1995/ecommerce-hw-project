@@ -118,7 +118,7 @@ const HeaderList = styled.div`
   justify-content: space-around;
   align-items: stretch;
   list-style-type: none;
-  font-size: 20px;
+  font-size: 15px;
   li {
     margin: 30px;
   }

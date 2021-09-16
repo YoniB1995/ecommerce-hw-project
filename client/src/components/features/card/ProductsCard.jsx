@@ -24,7 +24,7 @@ const ProductsCard = ({
   };
   return (
     <ProductCard>
-      <h3>{title}</h3>
+      <ProductTitle>{title}</ProductTitle>
       <p>{category}</p>
       <div></div>
       <img src={image} alt={title} />
@@ -92,6 +92,11 @@ const ProductCard = styled.div`
   @media screen and (max-height: 400px) {
     height: 130vh;
   }
+`;
+
+const ProductTitle = styled.h3`
+  font-size: 15px;
+  font-weight: 800;
 `;
 
 const Description = styled.div`

@@ -20,8 +20,8 @@ const Homepage = () => {
       <img
         src="images/mil_honey_banner.jpg"
         alt="mlik and honey banner"
-        height="450px"
-        width="450px"
+        height="250px"
+        width="250px"
       />
       <HeaderHomepage>Latest Products</HeaderHomepage>
       <ProductsList>

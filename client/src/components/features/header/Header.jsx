@@ -22,7 +22,7 @@ const HeaderBody = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  font-size: 30px;
+  font-size: 15px;
   height: 20vh;
 
   @media (max-width: 960px) {
