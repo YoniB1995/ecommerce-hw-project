@@ -17,12 +17,6 @@ const Homepage = () => {
 
   return (
     <HomepageBody>
-      <img
-        src="images/mil_honey_banner.jpg"
-        alt="mlik and honey banner"
-        height="250px"
-        width="250px"
-      />
       <HeaderHomepage>Latest Products</HeaderHomepage>
       <ProductsList>
         {loading ? (

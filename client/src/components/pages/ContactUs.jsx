@@ -17,7 +17,7 @@ const ContactUs = () => {
           About This App
           <FontAwesomeIcon icon={faShoppingCart} style={{ color: "gold" }} />
         </h3>
-        <p>An Mini-eCommerce App for GKI-Group </p>
+        <p>An Mini-eCommerce App for a Company in 72 Hours </p>
         <p>Version : 1.0.0 </p>
 
         <h3>Developer Details: </h3>

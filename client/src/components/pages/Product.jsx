@@ -11,12 +11,16 @@ const Product = ({ match, history }) => {
   }, [dispatch]);
 
   const getProduct = useSelector((state) => state.product);
-  const { product, loading, error } = getProduct;
+  const { product, status, error } = getProduct;
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     history.push("/checkout");
   };
+
+  if (status === "loading") {
+    return <span>Loading...</span>;
+  }
 
   return (
     <div>
