@@ -1,4 +1,4 @@
-<h1>GKI mini-eCommerce App</h1>
+<h1> mini-eCommerce App</h1>
 
 <img src="https://serving.photos.photobox.com/6253836324cde9d07406990323b82c931f85fc71ca74782b11c83c739bd7bcd4be13706c.jpg"/>
 
