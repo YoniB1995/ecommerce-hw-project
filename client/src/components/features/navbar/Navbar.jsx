@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTotals } from "../../../redux/cartSlicer";
+import { getTotals, clearCart } from "../../../redux/cartSlicer";
 import { useAuth } from "../../context/AuthContext";
 
 import {
@@ -29,7 +29,7 @@ export default function Navbar({ click }) {
 
   useEffect(() => {
     dispatch(getTotals());
-  }, [cart, dispatch]);
+  }, [cart, dispatch, user]);
 
   const { logout } = useAuth();
 
@@ -37,6 +37,8 @@ export default function Navbar({ click }) {
     setError("");
     localStorage.removeItem("useremail");
     localStorage.removeItem("token");
+    localStorage.removeItem("cartItems");
+    dispatch(clearCart());
     history.push("/login");
     setUser(null);
     try {
