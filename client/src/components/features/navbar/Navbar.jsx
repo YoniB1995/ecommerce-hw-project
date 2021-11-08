@@ -21,7 +21,7 @@ export default function Navbar({ click }) {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setUser(localStorage.getItem("useremail").toString());
+      setUser(localStorage.getItem("useremail"));
     }
   }, [user]);
   const cart = useSelector((state) => state.cart);
@@ -69,9 +69,7 @@ export default function Navbar({ click }) {
           ) : (
             <>
               <li>Welcome {user}</li>
-              <button onClick={handleLogout}>
-                <li>Logout{userLogoutIcon}</li>
-              </button>
+              <li onClick={handleLogout}>Logout{userLogoutIcon}</li>
             </>
           )}
         </HeaderImageRegister>

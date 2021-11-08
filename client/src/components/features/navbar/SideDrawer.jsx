@@ -22,7 +22,7 @@ const SideDrawer = ({ show, click }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setUser(localStorage.getItem("useremail").toString());
+      setUser(localStorage.getItem("useremail"));
     }
   }, [user]);
 
