@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { getProductDetails } from "../../../redux/productDetailsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/cartSlicer";
 
@@ -37,15 +36,14 @@ const ProductsCard = ({
         <Button variant="contained" color="primary">
           Get Details
         </Button>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => handleAddToCart(product)}
-        >
-          Add To Cart
-        </Button>
       </Link>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => handleAddToCart(product)}
+      >
+        Add To Cart
+      </Button>
     </ProductCard>
   );
 };

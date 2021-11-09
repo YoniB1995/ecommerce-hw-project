@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Card, Button, Form, Alert, Container } from "react-bootstrap";
 import { userSendMail } from "../icons/Icons";
-import axios from "axios";
-import { API_LOCAL_CLEAN } from "../../../service/api.service";
+import { sendMail } from "../../../service/mail.service";
+
 const ContactForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -13,18 +13,8 @@ const ContactForm = () => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-
+    await sendMail(email, text, subject);
     setSent(true);
-
-    try {
-      await axios.post(`${API_LOCAL_CLEAN}/send_mail`, {
-        text: text,
-        email: email,
-        subject: subject,
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

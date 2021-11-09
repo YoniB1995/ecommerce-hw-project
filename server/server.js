@@ -25,6 +25,8 @@ connectDB.on('error',()=>{
 app.use('/products',productRouter)
 app.post('/send_mail',cors(), async (req,res)=> {
     const {text,email,subject} = req.body;
+
+    try {
     const transport = nodemailer.createTransport({
         host: process.env.SMPT_HOST,
         port: process.env.SMPT_PORT ,
@@ -35,7 +37,7 @@ app.post('/send_mail',cors(), async (req,res)=> {
     })
 
     await transport.sendMail({
-        from: process.env.SMPT_MAILFROM,
+        from: process.env.MAILFROM ,
         to: email,
         subject : subject,
         html: `<div className="email" style="
@@ -52,6 +54,11 @@ app.post('/send_mail',cors(), async (req,res)=> {
         </div>
         `
     })
+    res.send("Email Sent!")
+}
+catch(error){
+    console.log(error)
+}
 })
 
 

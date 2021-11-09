@@ -1,4 +1,4 @@
-
+export const API_CLEAN = "https://ecommerce-hw-project.herokuapp.com"
 export const API = "https://ecommerce-hw-project.herokuapp.com/products"
 export const API_STORE_MEN="https://ecommerce-hw-project.herokuapp.com/products/category/men"
 export const API_STORE_WOMEN="https://ecommerce-hw-project.herokuapp.com/products/category/women"
