@@ -11,9 +11,9 @@ const ContactForm = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
 
-  const handleSend = async (e) => {
+  const handleSend = (e) => {
     e.preventDefault();
-    await sendMail(email, text, subject);
+    sendMail(email, text, subject);
     setSent(true);
   };
 
